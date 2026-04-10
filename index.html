@@ -1017,6 +1017,27 @@
         }
 
         /* ========== RESPONSIVE ========== */
+
+        /* Mobile menu overlay backdrop */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Tablet */
         @media (max-width: 968px) {
             .about-grid {
                 grid-template-columns: 1fr;
@@ -1026,29 +1047,54 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-brand .logo {
+                justify-content: center;
+            }
+
+            .learn-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
         }
 
+        /* Mobile */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 70%;
+                width: 75%;
+                max-width: 320px;
                 height: 100vh;
+                height: 100dvh;
                 background: var(--deep-purple);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 2rem;
-                transition: right 0.4s ease;
+                gap: 1.8rem;
+                transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+                z-index: 999;
+                padding: 2rem 1rem;
             }
 
             html[dir="ltr"] .nav-links {
                 right: auto;
                 left: -100%;
-                transition: left 0.4s ease;
+                transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
 
             .nav-links.open {
@@ -1060,28 +1106,349 @@
                 right: auto;
             }
 
+            .nav-links a {
+                font-size: 1.05rem;
+                padding: 0.6rem 0;
+            }
+
             .menu-toggle {
                 display: flex;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            /* Hero mobile */
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh;
             }
 
-            .courses-grid {
-                grid-template-columns: 1fr;
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero .credentials {
+                gap: 0.5rem;
+            }
+
+            .credential-tag {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.8rem;
+            }
+
+            .hero-tagline {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .hero-cta {
+                padding: 0.85rem 2rem;
+                font-size: 1rem;
+            }
+
+            .scroll-indicator {
+                bottom: 25px;
+            }
+
+            /* Sections mobile */
+            section {
+                padding: 3.5rem 1.2rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            /* About mobile */
+            .about-image img {
+                max-width: 250px;
+            }
+
+            .about-image::before {
+                max-width: 250px;
+            }
+
+            .about-text h3 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .about-text p {
+                font-size: 0.92rem;
             }
 
             .about-features {
                 grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
 
+            /* Learn mobile */
+            .learn-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+
+            .learn-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .learn-card .icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .learn-card h4 {
+                font-size: 0.88rem;
+            }
+
+            .learn-card p {
+                font-size: 0.8rem;
+                display: none;
+            }
+
+            /* Courses mobile */
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .course-card {
+                padding: 1.2rem;
+            }
+
+            .course-card .course-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .course-card h4 {
+                font-size: 0.95rem;
+            }
+
+            .course-card p {
+                font-size: 0.82rem;
+            }
+
+            .course-category h3 {
+                font-size: 1.2rem;
+            }
+
+            /* Why us mobile */
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .why-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .why-card .icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+
+            .why-card h4 {
+                font-size: 0.95rem;
+            }
+
+            .why-card p {
+                font-size: 0.82rem;
+            }
+
+            /* Testimonials mobile */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            /* CTA mobile */
             .cta-box {
                 padding: 2.5rem 1.5rem;
+                border-radius: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+            }
+
+            /* Footer mobile */
+            .footer {
+                padding: 2.5rem 1.2rem 1.5rem;
+            }
+
+            .footer-content {
+                text-align: center;
+            }
+
+            .footer-brand .logo {
+                justify-content: center;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.8rem 1rem;
+            }
+
+            .navbar.scrolled {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .logo-text {
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.85rem;
+            }
+
+            .hero-tagline {
+                font-size: 0.88rem;
+            }
+
+            .hero-logo {
+                width: 85px;
+                height: 85px;
+            }
+
+            .credential-tag {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.7rem;
             }
 
             section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .learn-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+
+            .learn-card {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .learn-card h4 {
+                font-size: 0.82rem;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 2rem 1.2rem;
+            }
+
+            .cta-box h2 {
+                font-size: 1.3rem;
+            }
+
+            .cta-box p {
+                font-size: 0.9rem;
+            }
+
+            .about-image img {
+                max-width: 200px;
+            }
+
+            .about-image::before {
+                max-width: 200px;
+            }
+
+            .lang-switcher {
+                margin-top: 0.5rem;
+            }
+
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Ensure touch targets are minimum 44px */
+        @media (pointer: coarse) {
+            .nav-links a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .lang-btn {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .course-card {
+                min-height: 44px;
+            }
+
+            .btn-primary, .btn-secondary {
+                min-height: 48px;
+            }
+        }
+
+        /* Safe area insets for notched phones */
+        @supports (padding: env(safe-area-inset-bottom)) {
+            .footer {
+                padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            }
+
+            .navbar {
+                padding-left: calc(2rem + env(safe-area-inset-left));
+                padding-right: calc(2rem + env(safe-area-inset-right));
+            }
+
+            .nav-links {
+                padding-top: env(safe-area-inset-top);
             }
         }
 
@@ -1139,6 +1506,9 @@
 <body data-active-lang="ar">
     <!-- Particles -->
     <div class="particles" id="particles"></div>
+
+    <!-- Mobile menu overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -2233,18 +2603,31 @@
         // ========== MOBILE MENU ==========
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function openMenu() {
+            menuToggle.classList.add('active');
+            navLinks.classList.add('open');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('open');
+            navLinks.classList.contains('open') ? closeMenu() : openMenu();
         });
+
+        navOverlay.addEventListener('click', closeMenu);
 
         // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('open');
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // ========== SCROLL REVEAL ANIMATION ==========
