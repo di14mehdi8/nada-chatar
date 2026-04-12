@@ -69,6 +69,10 @@
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         [lang="fr"] body, [lang="en"] body {
@@ -3723,6 +3727,18 @@
                 }
             });
         });
+
+        // ========== COPY PROTECTION ==========
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+        document.addEventListener('cut', e => e.preventDefault());
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C' || e.key === 'a' || e.key === 'A' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+            if (e.key === 'F12') e.preventDefault();
+        });
+        document.addEventListener('dragstart', e => e.preventDefault());
 
         // ========== ARTICLE MODALS ==========
         function openArticle(id) {
