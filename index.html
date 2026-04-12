@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon" href="brian.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ========== CSS RESET & VARIABLES ========== */
         *, *::before, *::after {
@@ -190,12 +190,19 @@
         }
 
         .logo-text {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-family: 'Great Vibes', cursive;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        html[data-active-lang="ar"] .logo-text {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .nav-links {
@@ -360,11 +367,23 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
             color: var(--white);
             margin-bottom: 0.5rem;
-            font-weight: 700;
+            font-weight: 400;
+            font-family: 'Great Vibes', cursive;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 10px rgba(201,168,76,0.3));
             animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        html[data-active-lang="ar"] .hero h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 700;
         }
 
         .hero .subtitle {
@@ -1530,7 +1549,11 @@
         <div class="nav-content">
             <a href="#" class="logo">
                 <img src="brian.jpeg" alt="Dr. Nada Chatar Logo">
-                <span class="logo-text">Dr. Nada Chatar</span>
+                <span class="logo-text">
+                    <span data-lang-ar>د. ندى شتار</span>
+                    <span data-lang-fr>Dr. Nada Chatar</span>
+                    <span data-lang-en>Dr. Nada Chatar</span>
+                </span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li>
@@ -1588,7 +1611,11 @@
     <header class="hero" id="home">
         <div class="hero-content">
             <img src="brian.jpeg" alt="Dr. Nada Chatar" class="hero-logo">
-            <h1>Dr. Nada Chatar</h1>
+            <h1>
+                <span data-lang-ar>د. ندى شتار</span>
+                <span data-lang-fr>Dr. Nada Chatar</span>
+                <span data-lang-en>Dr. Nada Chatar</span>
+            </h1>
             <p class="subtitle">
                 <span data-lang-ar>معالجة شاملة | مدربة معتمدة</span>
                 <span data-lang-fr>Th&eacute;rapeute Holistique | Formatrice Certifi&eacute;e</span>
@@ -2502,7 +2529,11 @@
             <div class="footer-brand">
                 <a href="#" class="logo">
                     <img src="brian.jpeg" alt="Dr. Nada Chatar">
-                    <span class="logo-text">Dr. Nada Chatar</span>
+                    <span class="logo-text">
+                        <span data-lang-ar>د. ندى شتار</span>
+                        <span data-lang-fr>Dr. Nada Chatar</span>
+                        <span data-lang-en>Dr. Nada Chatar</span>
+                    </span>
                 </a>
                 <p style="margin-top: 1rem;">
                     <span data-lang-ar>معالجة شاملة — ممارسة ومدربة معتمدة في البرمجة اللغوية العصبية — متخصصة في الأنثروبولوجيا والتنمية البشرية</span>
@@ -2556,10 +2587,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Dr. Nada Chatar.
-                <span data-lang-ar>جميع الحقوق محفوظة.</span>
-                <span data-lang-fr>Tous droits r&eacute;serv&eacute;s.</span>
-                <span data-lang-en>All rights reserved.</span>
+            <p>&copy; 2026
+                <span data-lang-ar>د. ندى شتار. جميع الحقوق محفوظة.</span>
+                <span data-lang-fr>Dr. Nada Chatar. Tous droits r&eacute;serv&eacute;s.</span>
+                <span data-lang-en>Dr. Nada Chatar. All rights reserved.</span>
             </p>
         </div>
     </footer>
