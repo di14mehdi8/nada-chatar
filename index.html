@@ -1877,12 +1877,13 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+            -webkit-transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .intro-overlay.fade-out {
             opacity: 0;
-            visibility: hidden;
+            pointer-events: none;
         }
 
         .intro-svg-container {
@@ -1909,6 +1910,8 @@
             stroke: var(--gold);
             stroke-width: 0.6;
             opacity: 0;
+            -webkit-transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
         }
 
         .intro-flower .outer-ring {
@@ -1920,6 +1923,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            -webkit-transform: translate(-50%, -50%) scale(0);
             transform: translate(-50%, -50%) scale(0);
             width: 90px;
             height: 90px;
@@ -1946,6 +1950,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             opacity: 0;
+            -webkit-transform: translateY(20px);
             transform: translateY(20px);
         }
 
@@ -1960,6 +1965,7 @@
             font-size: 0.95rem;
             color: var(--gold-light);
             opacity: 0;
+            -webkit-transform: translateY(15px);
             transform: translateY(15px);
             letter-spacing: 2px;
             font-weight: 300;
@@ -1988,10 +1994,12 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             font-size: 2.5rem;
             color: var(--gold);
             opacity: 0;
+            -webkit-filter: drop-shadow(0 0 20px rgba(201,168,76,0.6));
             filter: drop-shadow(0 0 20px rgba(201,168,76,0.6));
         }
 
@@ -3804,33 +3812,48 @@
             // Phase 1: Draw sacred geometry circles one by one
             circles.forEach((circle, i) => {
                 const delay = 80 + i * 120;
-                const circumference = 2 * Math.PI * parseFloat(circle.getAttribute('r'));
+                const r = parseFloat(circle.getAttribute('r'));
+                const circumference = 2 * Math.PI * r;
+                circle.setAttribute('stroke-dasharray', circumference);
+                circle.setAttribute('stroke-dashoffset', circumference);
                 circle.style.strokeDasharray = circumference;
                 circle.style.strokeDashoffset = circumference;
                 setTimeout(() => {
                     circle.style.opacity = '1';
+                    circle.style.webkitTransition = 'stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                     circle.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    circle.setAttribute('stroke-dashoffset', '0');
                     circle.style.strokeDashoffset = '0';
                 }, delay);
                 t = Math.max(t, delay + 800);
             });
 
+            // Helper: set transition with webkit prefix
+            function setTransition(el, val) {
+                el.style.webkitTransition = val;
+                el.style.transition = val;
+            }
+            function setTransform(el, val) {
+                el.style.webkitTransform = val;
+                el.style.transform = val;
+            }
+
             // Phase 2: Om symbol appears and fades
             setTimeout(() => {
-                om.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                setTransition(om, 'opacity 0.6s ease, -webkit-transform 0.6s ease, transform 0.6s ease');
                 om.style.opacity = '0.8';
-                om.style.transform = 'translate(-50%, -50%) scale(1)';
+                setTransform(om, 'translate(-50%, -50%) scale(1)');
             }, t - 400);
 
             // Phase 3: Om fades, logo emerges
             setTimeout(() => {
-                om.style.transition = 'opacity 0.5s ease';
+                setTransition(om, 'opacity 0.5s ease');
                 om.style.opacity = '0';
 
                 setTimeout(() => {
-                    logo.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 1.2s ease';
+                    setTransition(logo, 'opacity 0.8s ease, -webkit-transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 1.2s ease');
                     logo.style.opacity = '1';
-                    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+                    setTransform(logo, 'translate(-50%, -50%) scale(1)');
                     logo.style.boxShadow = '0 0 60px rgba(201,168,76,0.5)';
                 }, 400);
             }, t + 200);
@@ -3839,7 +3862,7 @@
             setTimeout(() => {
                 dots.forEach((dot, i) => {
                     setTimeout(() => {
-                        dot.style.transition = 'opacity 0.4s ease, transform 0.6s ease';
+                        setTransition(dot, 'opacity 0.4s ease, top 0.6s ease, left 0.6s ease');
                         dot.style.opacity = '0.7';
                         const angle = (i / 24) * Math.PI * 2;
                         const dist = 55;
@@ -3854,21 +3877,21 @@
 
             // Phase 5: Name and tagline appear
             setTimeout(() => {
-                name.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                setTransition(name, 'opacity 0.8s ease, -webkit-transform 0.8s ease, transform 0.8s ease');
                 name.style.opacity = '1';
-                name.style.transform = 'translateY(0)';
+                setTransform(name, 'translateY(0)');
             }, t + 800);
 
             setTimeout(() => {
-                tagline.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                setTransition(tagline, 'opacity 0.8s ease, -webkit-transform 0.8s ease, transform 0.8s ease');
                 tagline.style.opacity = '1';
-                tagline.style.transform = 'translateY(0)';
+                setTransform(tagline, 'translateY(0)');
             }, t + 1100);
 
             // Phase 6: Sacred geometry gently pulses then fade out
             setTimeout(() => {
                 circles.forEach(circle => {
-                    circle.style.transition = 'opacity 0.6s ease';
+                    setTransition(circle, 'opacity 0.6s ease');
                     circle.style.opacity = '0.3';
                 });
             }, t + 1400);
