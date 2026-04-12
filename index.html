@@ -1535,6 +1535,330 @@
             right: auto;
             left: 0;
         }
+
+        /* ========== ABOUT HIGHLIGHT & MISSION ========== */
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.15) 100%);
+            border-right: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        html[dir="ltr"] .about-highlight {
+            border-right: none;
+            border-left: 4px solid var(--gold);
+        }
+
+        .about-highlight p {
+            color: var(--deep-purple);
+            font-weight: 500;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .about-mission {
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-mission .mission-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .about-mission p {
+            color: var(--gold-light) !important;
+            margin: 0 !important;
+            font-size: 1rem;
+        }
+
+        .about-mission strong {
+            color: var(--gold);
+        }
+
+        /* ========== ARTICLES / BLOG SECTION ========== */
+        .articles {
+            background: var(--white);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .article-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-card-body {
+            padding: 1.5rem;
+        }
+
+        .article-card-tag {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            color: var(--gold-dark);
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-card-body h4 {
+            font-size: 1.15rem;
+            color: var(--deep-purple);
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
+        .article-card-body p {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-card-body .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 1rem;
+            color: var(--gold-dark);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .article-card-body .read-more:hover {
+            color: var(--deep-purple);
+            gap: 10px;
+        }
+
+        /* Article modal / expanded view */
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            overflow-y: auto;
+            padding: 2rem;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .article-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .article-modal-content {
+            background: var(--white);
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem auto;
+            overflow: hidden;
+            animation: modalSlideUp 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes modalSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .article-modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        html[dir="ltr"] .article-modal-close {
+            left: auto;
+            right: 1rem;
+        }
+
+        .article-modal-close:hover {
+            background: rgba(0,0,0,0.8);
+            transform: scale(1.1);
+        }
+
+        .article-modal-hero {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .article-modal-body {
+            padding: 2.5rem;
+        }
+
+        .article-modal-body h2 {
+            font-size: 1.8rem;
+            color: var(--deep-purple);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .article-modal-body h3 {
+            font-size: 1.3rem;
+            color: var(--deep-purple);
+            margin: 2rem 0 1rem;
+        }
+
+        .article-modal-body h4 {
+            font-size: 1.1rem;
+            color: var(--purple);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .article-modal-body p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .article-modal-body ul {
+            padding-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        html[dir="ltr"] .article-modal-body ul {
+            padding-right: 0;
+            padding-left: 1.5rem;
+        }
+
+        .article-modal-body ul li {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 0.3rem;
+        }
+
+        .article-modal-body .article-quote {
+            background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.15));
+            border-right: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--deep-purple);
+        }
+
+        html[dir="ltr"] .article-modal-body .article-quote {
+            border-right: none;
+            border-left: 4px solid var(--gold);
+        }
+
+        .article-modal-body .article-image-inline {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            margin: 1.5rem auto;
+            display: block;
+            box-shadow: var(--shadow-soft);
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-card-image {
+                height: 180px;
+            }
+
+            .article-modal {
+                padding: 0.5rem;
+            }
+
+            .article-modal-content {
+                margin: 1rem auto;
+                border-radius: 16px;
+            }
+
+            .article-modal-hero {
+                height: 200px;
+            }
+
+            .article-modal-body {
+                padding: 1.5rem;
+            }
+
+            .article-modal-body h2 {
+                font-size: 1.4rem;
+            }
+
+            .about-mission {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .article-card-body {
+                padding: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body data-active-lang="ar">
@@ -1575,6 +1899,13 @@
                         <span data-lang-ar>الدورات</span>
                         <span data-lang-fr>Formations</span>
                         <span data-lang-en>Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#articles">
+                        <span data-lang-ar>مقالات</span>
+                        <span data-lang-fr>Articles</span>
+                        <span data-lang-en>Articles</span>
                     </a>
                 </li>
                 <li>
@@ -1661,60 +1992,85 @@
                 <h2>
                     <span data-lang-ar>من نحن</span>
                     <span data-lang-fr>&Agrave; Propos</span>
-                    <span data-lang-en>About Us</span>
+                    <span data-lang-en>About</span>
                 </h2>
             </div>
             <div class="about-grid">
                 <div class="about-image reveal">
-                    <img src="brian.jpeg" alt="Holistic Healing">
+                    <img src="brian.jpeg" alt="Dr. Nada Chatar">
                 </div>
                 <div class="about-text reveal reveal-delay-2">
                     <h3>
-                        <span data-lang-ar>رحلة نحو التوازن والوعي</span>
-                        <span data-lang-fr>Un voyage vers l'&eacute;quilibre et la conscience</span>
-                        <span data-lang-en>A Journey Toward Balance & Awareness</span>
+                        <span data-lang-ar>نبذة عني</span>
+                        <span data-lang-fr>Mon Parcours</span>
+                        <span data-lang-en>My Journey</span>
                     </h3>
                     <p>
-                        <span data-lang-ar>نقدّم برامج تدريبية عميقة تهدف إلى إعادة توازن الإنسان على جميع المستويات: الجسدي، النفسي، الطاقي، والروحي.</span>
-                        <span data-lang-fr>Nous proposons des programmes de formation profonds visant &agrave; r&eacute;&eacute;quilibrer l'&ecirc;tre humain &agrave; tous les niveaux : physique, psychologique, &eacute;nerg&eacute;tique et spirituel.</span>
-                        <span data-lang-en>We offer deep training programs aimed at rebalancing the human being on all levels: physical, psychological, energetic, and spiritual.</span>
+                        <span data-lang-ar>أنا مدرّبة ومعالجة متخصصة في العلاج الشمولي المتكامل، أعمل على موازنة الجسد والعقل والطاقة من خلال دمج تقنيات متعددة تجمع بين العلم والوعي.</span>
+                        <span data-lang-fr>Je suis formatrice et th&eacute;rapeute sp&eacute;cialis&eacute;e en th&eacute;rapie holistique int&eacute;gr&eacute;e. Je travaille &agrave; &eacute;quilibrer le corps, l'esprit et l'&eacute;nergie en combinant plusieurs techniques alliant science et conscience.</span>
+                        <span data-lang-en>I am a trainer and therapist specializing in integrated holistic therapy. I work on balancing body, mind, and energy by combining multiple techniques that blend science and consciousness.</span>
                     </p>
                     <p>
-                        <span data-lang-ar>نعتمد على مزيج متكامل من العلوم الحديثة، تقنيات الطاقة والتشافي، والوعي العميق وتطوير الذات.</span>
-                        <span data-lang-fr>Nous nous appuyons sur un m&eacute;lange int&eacute;gr&eacute; de sciences modernes, techniques &eacute;nerg&eacute;tiques de gu&eacute;rison, et conscience profonde du d&eacute;veloppement personnel.</span>
-                        <span data-lang-en>We rely on an integrated blend of modern sciences, energy healing techniques, and deep awareness for self-development.</span>
+                        <span data-lang-ar>أعتمد في عملي على مزيج من: العلاج الفيزيائي، الإبر الصينية، السوجوك، الريفلوكسولوجي، إضافة إلى العلاج بالموجات الدماغية، البرمجة اللغوية العصبية (NLP)، وترددات السولفيجيو.</span>
+                        <span data-lang-fr>Mon approche combine : physioth&eacute;rapie, acupuncture, Su Jok, r&eacute;flexologie, th&eacute;rapie par ondes c&eacute;r&eacute;brales, PNL (Programmation Neuro-Linguistique) et fr&eacute;quences Solf&egrave;ge.</span>
+                        <span data-lang-en>My approach combines: physiotherapy, acupuncture, Su Jok, reflexology, brainwave therapy, NLP (Neuro-Linguistic Programming), and Solfeggio frequencies.</span>
                     </p>
+                    <p>
+                        <span data-lang-ar>كما أمتلك خبرة متقدمة في مجال الجيوباتيك (طاقات الأرض)، والعمل على خطوط الطاقة مثل هارتمان وكوري، باستخدام تقنيات دقيقة لإعادة التوازن الطاقي في الإنسان والمكان.</span>
+                        <span data-lang-fr>Je poss&egrave;de &eacute;galement une expertise avanc&eacute;e en g&eacute;opathie (&eacute;nergies terrestres), travaillant sur les lignes &eacute;nerg&eacute;tiques telles que Hartmann et Curry, avec des techniques pr&eacute;cises pour r&eacute;&eacute;quilibrer l'&eacute;nergie chez l'humain et dans l'espace.</span>
+                        <span data-lang-en>I also have advanced expertise in geopathology (earth energies), working on energy lines such as Hartmann and Curry, using precise techniques to rebalance energy in both people and spaces.</span>
+                    </p>
+                    <div class="about-highlight reveal">
+                        <p>
+                            <span data-lang-ar>بخبرة تمتد لأكثر من 13 سنة في هذا المجال، كانت هذه الرحلة نقطة تحول عميقة في حياتي… غيّرت رؤيتي لنفسي، وفهمي للجسد، وكشفت لي أن الشفاء الحقيقي يبدأ من الداخل، من الوعي.</span>
+                            <span data-lang-fr>Avec plus de 13 ans d'exp&eacute;rience dans ce domaine, ce voyage a &eacute;t&eacute; un tournant profond dans ma vie… Il a chang&eacute; ma vision de moi-m&ecirc;me, ma compr&eacute;hension du corps, et m'a r&eacute;v&eacute;l&eacute; que la vraie gu&eacute;rison commence de l'int&eacute;rieur, par la conscience.</span>
+                            <span data-lang-en>With over 13 years of experience in this field, this journey has been a profound turning point in my life... It changed my vision of myself, my understanding of the body, and revealed to me that true healing starts from within, from consciousness.</span>
+                        </p>
+                    </div>
+                    <p>
+                        <span data-lang-ar>وما زلت مستمرة في البحث والتعمّق في تطوير الوعي واكتشاف أسرار الكون والإنسان، لأن هذا الطريق لا نهاية له… بل هو رحلة تطور مستمرة نحو الحقيقة.</span>
+                        <span data-lang-fr>Je continue &agrave; approfondir mes recherches sur le d&eacute;veloppement de la conscience et la d&eacute;couverte des secrets de l'univers et de l'&ecirc;tre humain, car ce chemin est sans fin… c'est un voyage d'&eacute;volution continue vers la v&eacute;rit&eacute;.</span>
+                        <span data-lang-en>I continue to deepen my research into consciousness development and discovering the secrets of the universe and humanity, because this path has no end... it is a continuous journey of evolution toward truth.</span>
+                    </p>
+                    <div class="about-mission reveal">
+                        <span class="mission-icon">&#10024;</span>
+                        <p>
+                            <span data-lang-ar><strong>رسالتي:</strong> أن أساعدك على فهم نفسك بعمق، واستعادة توازنك، وتفعيل قوتك الداخلية.</span>
+                            <span data-lang-fr><strong>Ma mission :</strong> Vous aider &agrave; vous comprendre en profondeur, retrouver votre &eacute;quilibre et activer votre force int&eacute;rieure.</span>
+                            <span data-lang-en><strong>My mission:</strong> To help you deeply understand yourself, restore your balance, and activate your inner power.</span>
+                        </p>
+                    </div>
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="icon">&#129504;</div>
                             <span>
-                                <span data-lang-ar>العلوم الحديثة</span>
-                                <span data-lang-fr>Sciences Modernes</span>
-                                <span data-lang-en>Modern Sciences</span>
+                                <span data-lang-ar>العلاج الفيزيائي و NLP</span>
+                                <span data-lang-fr>Physioth&eacute;rapie & PNL</span>
+                                <span data-lang-en>Physiotherapy & NLP</span>
                             </span>
                         </div>
                         <div class="about-feature">
                             <div class="icon">&#9889;</div>
                             <span>
-                                <span data-lang-ar>تقنيات الطاقة</span>
-                                <span data-lang-fr>Techniques &Eacute;nerg&eacute;tiques</span>
-                                <span data-lang-en>Energy Techniques</span>
+                                <span data-lang-ar>الموجات الدماغية والسولفيجيو</span>
+                                <span data-lang-fr>Ondes C&eacute;r&eacute;brales & Solf&egrave;ge</span>
+                                <span data-lang-en>Brainwave & Solfeggio</span>
                             </span>
                         </div>
                         <div class="about-feature">
                             <div class="icon">&#127793;</div>
                             <span>
-                                <span data-lang-ar>التشافي الطبيعي</span>
-                                <span data-lang-fr>Gu&eacute;rison Naturelle</span>
-                                <span data-lang-en>Natural Healing</span>
+                                <span data-lang-ar>الإبر الصينية والسوجوك</span>
+                                <span data-lang-fr>Acupuncture & Su Jok</span>
+                                <span data-lang-en>Acupuncture & Su Jok</span>
                             </span>
                         </div>
                         <div class="about-feature">
                             <div class="icon">&#128302;</div>
                             <span>
-                                <span data-lang-ar>الوعي العميق</span>
-                                <span data-lang-fr>Conscience Profonde</span>
-                                <span data-lang-en>Deep Awareness</span>
+                                <span data-lang-ar>الجيوباتيك وخطوط الطاقة</span>
+                                <span data-lang-fr>G&eacute;opathie & Lignes &Eacute;nerg&eacute;tiques</span>
+                                <span data-lang-en>Geopathology & Energy Lines</span>
                             </span>
                         </div>
                     </div>
@@ -2387,6 +2743,648 @@
         </div>
     </section>
 
+    <!-- Articles Section -->
+    <section class="articles" id="articles">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2>
+                    <span data-lang-ar>مقالات ومعرفة</span>
+                    <span data-lang-fr>Articles & Savoir</span>
+                    <span data-lang-en>Articles & Knowledge</span>
+                </h2>
+                <p>
+                    <span data-lang-ar>اكتشف عالم الطاقة والوعي والشفاء من خلال مقالاتنا المتخصصة</span>
+                    <span data-lang-fr>D&eacute;couvrez le monde de l'&eacute;nergie, de la conscience et de la gu&eacute;rison &agrave; travers nos articles sp&eacute;cialis&eacute;s</span>
+                    <span data-lang-en>Discover the world of energy, consciousness and healing through our specialized articles</span>
+                </p>
+            </div>
+            <div class="articles-grid">
+
+                <!-- Article 1: Feng Shui -->
+                <div class="article-card reveal" onclick="openArticle('feng-shui')">
+                    <img src="feng-shui-elements.jpeg" alt="Feng Shui Elements" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>فنغ شوي</span>
+                            <span data-lang-fr>Feng Shui</span>
+                            <span data-lang-en>Feng Shui</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>تعريف فنغ شوي، فوائده، وكيفية تطبيقه</span>
+                            <span data-lang-fr>D&eacute;finition du Feng Shui, ses bienfaits et comment l'appliquer</span>
+                            <span data-lang-en>What is Feng Shui, Its Benefits & How to Apply It</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>كلمة "فينغ" تعني الريح و"شوي" تعني الماء. وهو مزيج قديم من الفن والعلم الصيني نشأ منذ أكثر من 3000 عام لتحقيق الانسجام والتوازن...</span>
+                            <span data-lang-fr>Le mot &laquo;Feng&raquo; signifie vent et &laquo;Shui&raquo; signifie eau. C'est un ancien m&eacute;lange d'art et de science chinois n&eacute; il y a plus de 3000 ans...</span>
+                            <span data-lang-en>"Feng" means wind and "Shui" means water. It is an ancient blend of Chinese art and science that originated over 3,000 years ago for harmony and balance...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 2: Su Jok -->
+                <div class="article-card reveal" onclick="openArticle('sujok')">
+                    <img src="sujok-hand-map.jpeg" alt="Su Jok Hand Map" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>السوجوك</span>
+                            <span data-lang-fr>Su Jok</span>
+                            <span data-lang-en>Su Jok</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>اليد الصغيرة — خريطة صحة الجسم بالكامل</span>
+                            <span data-lang-fr>La petite main — carte compl&egrave;te de la sant&eacute; du corps</span>
+                            <span data-lang-en>The Small Hand — A Complete Map of Body Health</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>في راحة اليد فقط، يوجد تمثيل مصغّر لكامل أعضاء الجسم المهمة. التدليك والضغط والتحفيز الصحيح يساعد على تنشيط الدورة الدموية...</span>
+                            <span data-lang-fr>Dans la paume de la main se trouve une repr&eacute;sentation miniature de tous les organes importants du corps. Le massage et la stimulation correcte activent la circulation...</span>
+                            <span data-lang-en>In the palm of the hand lies a miniature representation of all important body organs. Correct massage and stimulation activates blood circulation...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 3: Reflexology -->
+                <div class="article-card reveal" onclick="openArticle('reflexology')">
+                    <img src="reflexology-foot-fr.jpeg" alt="Reflexology" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>الريفلوكسولوجي</span>
+                            <span data-lang-fr>R&eacute;flexologie</span>
+                            <span data-lang-en>Reflexology</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>انعكاسات القدم — خريطة الجسم في باطن قدميك</span>
+                            <span data-lang-fr>R&eacute;flexologie plantaire — la carte du corps sous vos pieds</span>
+                            <span data-lang-en>Foot Reflexology — Your Body's Map Under Your Feet</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>في باطن القدم يوجد خريطة انعكاسية لكامل الجسم. كل نقطة ترتبط بأعضاء وعضلات وأنظمة محددة...</span>
+                            <span data-lang-fr>Sous la plante du pied se trouve une carte r&eacute;flexe de tout le corps. Chaque point est li&eacute; &agrave; des organes et syst&egrave;mes sp&eacute;cifiques...</span>
+                            <span data-lang-en>Under the sole of the foot lies a reflexive map of the entire body. Each point is connected to specific organs and systems...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 4: Auricular Therapy -->
+                <div class="article-card reveal" onclick="openArticle('auricular')">
+                    <img src="auricular-therapy.jpeg" alt="Auricular Therapy" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>العلاج بالأذن</span>
+                            <span data-lang-fr>Auriculoth&eacute;rapie</span>
+                            <span data-lang-en>Auricular Therapy</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>العلاج بالأذن — المنعكسات الأذينية</span>
+                            <span data-lang-fr>Auriculoth&eacute;rapie — les r&eacute;flexes auriculaires</span>
+                            <span data-lang-en>Auricular Therapy — Ear Reflexes</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>الأذن تمثّل خريطة مصغّرة للجسم، حيث ترتبط نقاط معينة فيها بأعضاء ووظائف مختلفة. من خلال تحفيز هذه النقاط يمكن استعادة التوازن...</span>
+                            <span data-lang-fr>L'oreille repr&eacute;sente une carte miniature du corps, o&ugrave; certains points sont li&eacute;s &agrave; diff&eacute;rents organes. En stimulant ces points, on peut restaurer l'&eacute;quilibre...</span>
+                            <span data-lang-en>The ear represents a miniature map of the body, where certain points are linked to different organs. By stimulating these points, balance can be restored...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 5: Trees & Nature -->
+                <div class="article-card reveal" onclick="openArticle('trees')">
+                    <img src="tree-energy.jpeg" alt="Tree Energy" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>الطبيعة والطاقة</span>
+                            <span data-lang-fr>Nature & &Eacute;nergie</span>
+                            <span data-lang-en>Nature & Energy</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>سرّ قديم في الطبيعة — كيف تتواصل مع الأشجار</span>
+                            <span data-lang-fr>Un ancien secret de la nature — comment communiquer avec les arbres</span>
+                            <span data-lang-en>An Ancient Secret in Nature — How to Connect with Trees</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>كل شجرة هي كائن حي يقف بين السماء والأرض، وكأنها قناة تربط بين طاقة الأرض العميقة وطاقة السماء الواسعة...</span>
+                            <span data-lang-fr>Chaque arbre est un &ecirc;tre vivant entre ciel et terre, comme un canal reliant l'&eacute;nergie profonde de la terre &agrave; l'&eacute;nergie vaste du ciel...</span>
+                            <span data-lang-en>Every tree is a living being standing between heaven and earth, like a channel connecting the deep energy of the earth to the vast energy of the sky...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 6: Tesla 369 -->
+                <div class="article-card reveal" onclick="openArticle('tesla')">
+                    <img src="tesla-369.jpeg" alt="Tesla 369 Energy" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>الوعي والتجسيد</span>
+                            <span data-lang-fr>Conscience & Manifestation</span>
+                            <span data-lang-en>Consciousness & Manifestation</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>نيكولا تسلا — نبيّ المستقبل وتقنيات تجسيد أفكاره</span>
+                            <span data-lang-fr>Nikola Tesla — proph&egrave;te du futur et techniques de manifestation</span>
+                            <span data-lang-en>Nikola Tesla — Prophet of the Future & Manifestation Techniques</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>إذا أردت أن تفهم أسرار الكون، فكّر من حيث الطاقة، التردد، والاهتزاز. كان تسلا مفتونًا بالأرقام 3 و6 و9...</span>
+                            <span data-lang-fr>&laquo;Si vous voulez comprendre les secrets de l'univers, pensez en termes d'&eacute;nergie, de fr&eacute;quence et de vibration.&raquo; Tesla &eacute;tait fascin&eacute; par les nombres 3, 6 et 9...</span>
+                            <span data-lang-en>"If you want to understand the secrets of the universe, think in terms of energy, frequency, and vibration." Tesla was fascinated by the numbers 3, 6, and 9...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Article 7: Alta Major -->
+                <div class="article-card reveal" onclick="openArticle('alta-major')">
+                    <img src="alta-major-chakra.jpeg" alt="Alta Major Chakra" class="article-card-image">
+                    <div class="article-card-body">
+                        <span class="article-card-tag">
+                            <span data-lang-ar>المحور الروحي</span>
+                            <span data-lang-fr>Axe Spirituel</span>
+                            <span data-lang-en>Spiritual Axis</span>
+                        </span>
+                        <h4>
+                            <span data-lang-ar>المحور الروحي للوعي — الجهاز الشبكي والعصب الحائر ومركز ألطا مايور</span>
+                            <span data-lang-fr>L'axe spirituel de la conscience — le syst&egrave;me r&eacute;ticulaire, le nerf vague et le centre Alta Major</span>
+                            <span data-lang-en>The Spiritual Axis of Consciousness — The Reticular System, Vagus Nerve & Alta Major Center</span>
+                        </h4>
+                        <p>
+                            <span data-lang-ar>يُعتبر الجهاز الشبكي المنشّط بوابة الإدراك الواعي والانتباه، بينما يُعد العصب الحائر حلقة الوصل بين جميع المراكز العصبية...</span>
+                            <span data-lang-fr>Le syst&egrave;me r&eacute;ticulaire activ&eacute; est la porte de la perception consciente, tandis que le nerf vague relie tous les centres nerveux du corps...</span>
+                            <span data-lang-en>The reticular activating system is the gateway to conscious perception, while the vagus nerve connects all nervous centers in the body...</span>
+                        </p>
+                        <span class="read-more">
+                            <span data-lang-ar>اقرأ المزيد &#8592;</span>
+                            <span data-lang-fr>Lire la suite &#8594;</span>
+                            <span data-lang-en>Read more &#8594;</span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modals -->
+    <!-- Feng Shui Modal -->
+    <div class="article-modal" id="modal-feng-shui">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="feng-shui-elements.jpeg" alt="Feng Shui" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>تعريف فنغ شوي، فوائده، وكيفية تطبيقه</h2>
+                    <p>إن كلمة "فينغ" تعني "الريح" و"شوي" تعني "الماء". وهو مزيج قديم من الفن والعلم الصيني الذي نشأ منذ أكثر من 3000 عام. بحسب ممارسي فنغ شوي الصينيين، هناك عنصران قويان هما الرياح والماء، ويستخدمان من أجل الصحة الجيدة والازدهار والحظ السعيد.</p>
+                    <p>اليوم يدور كل شيء حول ترتيب المباني والأشياء والفضاء والحياة لتحقيق الانسجام والتوازن والنجاح.</p>
+                    <h3>العناصر الخمسة في فنغ شوي</h3>
+                    <ul>
+                        <li><strong>الخشب:</strong> رمز الإبداع والنمو — الألوان: أخضر، بني</li>
+                        <li><strong>النار:</strong> رمز القيادة والجرأة — الألوان: أصفر ساطع، برتقالي</li>
+                        <li><strong>الأرض:</strong> رمز القوة والاستقرار — الألوان: أصفر فاتح، بني داكن</li>
+                        <li><strong>المعدن:</strong> رمز التركيز والنظام — الألوان: فضي، رمادي</li>
+                        <li><strong>الماء:</strong> رمز العاطفة والإلهام — الألوان: أزرق، أسود</li>
+                    </ul>
+                    <h3>الين واليانغ</h3>
+                    <p>يمكننا بناء المساحات من خلال موازنة طاقات الين واليانغ. الين طاقة أنثوية ترتبط بالليل والبرودة والهدوء. اليانغ عنصر ذكوري يرتبط بالشمس والنهار والحرارة.</p>
+                    <h3>أهم فوائد فنغ شوي</h3>
+                    <ul>
+                        <li>بيئة أكثر هدوءًا وانسجامًا</li>
+                        <li>نوم أفضل وصحة عامة محسّنة</li>
+                        <li>تحسين تدفق الطاقة الحيوية (تشي)</li>
+                        <li>علاقات أفضل وتواصل محسّن</li>
+                        <li>زيادة الرخاء والتقدم المهني</li>
+                        <li>تقليل التوتر والوصول إلى حالة ذهنية هادئة</li>
+                        <li>تعزيز الإبداع والنمو الشخصي</li>
+                        <li>الحماية من الطاقة الضارة</li>
+                    </ul>
+                    <h3>كيف تُطبّق فنغ شوي في منزلك؟</h3>
+                    <ul>
+                        <li>ركز على باب منزلك الأمامي</li>
+                        <li>نظف نوافذك واسمح بدخول الضوء الطبيعي</li>
+                        <li>اعرف ألوانك وكن منظماً ومرتباً</li>
+                        <li>استخدم خريطة الباغوا بشكل صحيح</li>
+                        <li>أزل الرموز والأشياء السلبية</li>
+                        <li>وازن العناصر الخمسة</li>
+                        <li>استخدم النباتات الداخلية للهواء النقي والطاقة</li>
+                        <li>لا تستخدم التلفاز في غرفة نومك</li>
+                        <li>لا تضع مرآة أمام سريرك</li>
+                    </ul>
+                    <div class="article-quote">تذكر أنك مبتدئ، ولست خبيرًا. يمكنك دائمًا استشارة خبير للحصول على حلول وإرشادات محددة.</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>D&eacute;finition du Feng Shui, ses bienfaits et comment l'appliquer</h2>
+                    <p>Le mot &laquo;Feng&raquo; signifie &laquo;vent&raquo; et &laquo;Shui&raquo; signifie &laquo;eau&raquo;. C'est un ancien m&eacute;lange d'art et de science chinois qui est n&eacute; il y a plus de 3000 ans. Selon les praticiens chinois du Feng Shui, le vent et l'eau sont deux &eacute;l&eacute;ments puissants utilis&eacute;s pour la bonne sant&eacute;, la prosp&eacute;rit&eacute; et la chance.</p>
+                    <h3>Les cinq &eacute;l&eacute;ments du Feng Shui</h3>
+                    <ul>
+                        <li><strong>Bois :</strong> Symbole de cr&eacute;ativit&eacute; et croissance — Couleurs : vert, marron</li>
+                        <li><strong>Feu :</strong> Symbole de leadership et audace — Couleurs : jaune vif, orange</li>
+                        <li><strong>Terre :</strong> Symbole de force et stabilit&eacute; — Couleurs : jaune clair, marron fonc&eacute;</li>
+                        <li><strong>M&eacute;tal :</strong> Symbole de concentration et ordre — Couleurs : argent&eacute;, gris</li>
+                        <li><strong>Eau :</strong> Symbole d'&eacute;motion et inspiration — Couleurs : bleu, noir</li>
+                    </ul>
+                    <h3>Principaux bienfaits du Feng Shui</h3>
+                    <ul>
+                        <li>Environnement plus calme et harmonieux</li>
+                        <li>Meilleur sommeil et sant&eacute; am&eacute;lior&eacute;e</li>
+                        <li>Am&eacute;lioration du flux d'&eacute;nergie vitale (Chi)</li>
+                        <li>Meilleures relations et communication</li>
+                        <li>Prosp&eacute;rit&eacute; accrue et progression professionnelle</li>
+                        <li>R&eacute;duction du stress et paix mentale</li>
+                        <li>Cr&eacute;ativit&eacute; et croissance personnelle renforc&eacute;es</li>
+                        <li>Protection contre les &eacute;nergies n&eacute;gatives</li>
+                    </ul>
+                    <div class="article-quote">Rappelez-vous que vous &ecirc;tes d&eacute;butant. Vous pouvez toujours consulter un expert pour des solutions et des conseils sp&eacute;cifiques.</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>What is Feng Shui, Its Benefits & How to Apply It</h2>
+                    <p>"Feng" means "wind" and "Shui" means "water." It is an ancient blend of Chinese art and science that originated over 3,000 years ago. According to Chinese Feng Shui practitioners, wind and water are two powerful elements used for good health, prosperity, and fortune.</p>
+                    <h3>The Five Elements of Feng Shui</h3>
+                    <ul>
+                        <li><strong>Wood:</strong> Symbol of creativity and growth — Colors: green, brown</li>
+                        <li><strong>Fire:</strong> Symbol of leadership and boldness — Colors: bright yellow, orange</li>
+                        <li><strong>Earth:</strong> Symbol of strength and stability — Colors: light yellow, dark brown</li>
+                        <li><strong>Metal:</strong> Symbol of focus and order — Colors: silver, grey</li>
+                        <li><strong>Water:</strong> Symbol of emotion and inspiration — Colors: blue, black</li>
+                    </ul>
+                    <h3>Key Benefits of Feng Shui</h3>
+                    <ul>
+                        <li>Calmer and more harmonious environment</li>
+                        <li>Better sleep and improved overall health</li>
+                        <li>Improved flow of vital energy (Chi)</li>
+                        <li>Better relationships and communication</li>
+                        <li>Increased prosperity and career advancement</li>
+                        <li>Reduced stress and mental peace</li>
+                        <li>Enhanced creativity and personal growth</li>
+                        <li>Protection from harmful energies</li>
+                    </ul>
+                    <div class="article-quote">Remember that you are a beginner, not an expert. You can always consult an expert for specific solutions and guidance.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Su Jok Modal -->
+    <div class="article-modal" id="modal-sujok">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="sujok-hand-map.jpeg" alt="Su Jok" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>اليد الصغيرة — خريطة صحة الجسم بالكامل</h2>
+                    <p>في راحة اليد فقط، يوجد تمثيل مصغّر لكامل أعضاء الجسم المهمة. التدليك والضغط والتحفيز الصحيح للنقاط يساعد على تنشيط الدورة الدموية، تحفيز الأعضاء الداخلية، وتحسين الصحة بشكل ملحوظ.</p>
+                    <p>وفقًا للطب الصيني التقليدي، ترتبط اليد بالدماغ، القلب، الرئتين، الكبد، الكلى، الجهاز الهضمي، والجهاز التناسلي. تحفيز مناطق الانعكاس الصحيحة يساعد على تنظيم الطاقة (تشي) وتوازن الين واليانغ.</p>
+                    <h3>منطقة الرأس — الدماغ — الحواس</h3>
+                    <p>تقع في أطراف الأصابع: دعم الرؤية، تقليل الإجهاد والدوار، تحسين طنين الأذن وضعف السمع، تقليل انسداد الأنف والتهاب الجيوب، تقليل الصداع والتوتر والأرق.</p>
+                    <h3>منطقة الصدر — القلب — الرئتان</h3>
+                    <p>في وسط راحة اليد: تنظيم ضربات القلب وتقليل الخفقان، دعم حالات السعال وضيق التنفس والربو. الضغط الخفيف يوميًا يساعد على تحسين التنفس والنوم.</p>
+                    <h3>منطقة الهضم — الأيض</h3>
+                    <p>أسفل راحة اليد: تقليل ألم المعدة والانتفاخ والارتجاع، دعم سكر الدم والهضم، إزالة السموم وتقليل الحرارة الداخلية، تقليل الإمساك واضطرابات الهضم.</p>
+                    <h3>منطقة العمود الفقري — العظام والمفاصل</h3>
+                    <p>على طول الحافة الداخلية لليد: دعم آلام الكتفين والرقبة والظهر وتنميل الأطراف. مفيد جدًا لمن يجلسون لفترات طويلة.</p>
+                    <h3>طريقة التطبيق البسيطة في المنزل</h3>
+                    <ul>
+                        <li>تدفئة اليدين لمدة 30–60 ثانية</li>
+                        <li>الضغط والتدليك لكل منطقة 5–10 دقائق يوميًا</li>
+                        <li>مع التنفس العميق والاسترخاء</li>
+                        <li>الاستمرارية اليومية تساعد الجسم على التوازن والشفاء الذاتي</li>
+                    </ul>
+                    <div class="article-quote">"اعرف كيف تضغط على يدك… تعرف كيف تعتني بجسمك. عندما تتدفق الطاقة والدم… تبتعد الأمراض."</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>La petite main — carte compl&egrave;te de la sant&eacute; du corps</h2>
+                    <p>Dans la paume de la main se trouve une repr&eacute;sentation miniature de tous les organes importants du corps. Le massage, la pression et la stimulation correcte des points aident &agrave; activer la circulation sanguine et am&eacute;liorer la sant&eacute;.</p>
+                    <h3>Zone de la t&ecirc;te — Cerveau — Sens</h3>
+                    <p>Situ&eacute;e au bout des doigts : soutien de la vision, r&eacute;duction de la fatigue et des vertiges, am&eacute;lioration des acouph&egrave;nes, r&eacute;duction des maux de t&ecirc;te, du stress et de l'insomnie.</p>
+                    <h3>Zone thoracique — C&oelig;ur — Poumons</h3>
+                    <p>Au centre de la paume : r&eacute;gulation du rythme cardiaque, soutien de la toux, de l'essoufflement et de l'asthme. La pression douce quotidienne am&eacute;liore la respiration et le sommeil.</p>
+                    <h3>Application simple &agrave; la maison</h3>
+                    <ul>
+                        <li>R&eacute;chauffer les mains pendant 30-60 secondes</li>
+                        <li>Presser et masser chaque zone 5-10 minutes par jour</li>
+                        <li>Avec respiration profonde et relaxation</li>
+                        <li>La r&eacute;gularit&eacute; quotidienne aide le corps &agrave; s'&eacute;quilibrer et s'auto-gu&eacute;rir</li>
+                    </ul>
+                    <div class="article-quote">&laquo;Sachez comment presser votre main… vous saurez comment prendre soin de votre corps.&raquo;</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>The Small Hand — A Complete Map of Body Health</h2>
+                    <p>In the palm of the hand alone lies a miniature representation of all important body organs. Correct massage, pressure, and stimulation of these points activates blood circulation, stimulates internal organs, and notably improves health.</p>
+                    <h3>Head Zone — Brain — Senses</h3>
+                    <p>Located at the fingertips: supporting vision, reducing fatigue and dizziness, improving tinnitus and hearing loss, reducing sinus congestion, reducing headaches, tension, and insomnia.</p>
+                    <h3>Chest Zone — Heart — Lungs</h3>
+                    <p>In the center of the palm: regulating heartbeat, supporting cough, shortness of breath, and asthma. Daily gentle pressure improves breathing and sleep.</p>
+                    <h3>Simple Home Application</h3>
+                    <ul>
+                        <li>Warm your hands for 30-60 seconds</li>
+                        <li>Press and massage each zone for 5-10 minutes daily</li>
+                        <li>With deep breathing and relaxation</li>
+                        <li>Daily consistency helps the body balance and self-heal</li>
+                    </ul>
+                    <div class="article-quote">"Know how to press your hand... you'll know how to care for your body. When energy and blood flow... diseases retreat."</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reflexology Modal -->
+    <div class="article-modal" id="modal-reflexology">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="reflexology-foot-fr.jpeg" alt="Reflexology" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>الريفلوكسولوجي — انعكاسات القدم</h2>
+                    <img src="reflexology-feet.jpeg" alt="Foot Reflexology Map" class="article-image-inline">
+                    <p>الريفلوكسولوجي هي تقنية علاجية تعتمد على مبدأ مهم: في باطن القدم يوجد خريطة انعكاسية لكامل الجسم. كل نقطة ترتبط بأعضاء، عضلات وأنظمة محددة.</p>
+                    <p>عندما نقوم بالضغط الواعي على النقاط المحددة، فإننا نحفّز النهايات العصبية التي ترسل إشارات إلى الجهاز العصبي المركزي. وهذا يمكن أن يساعد على تحقيق استرخاء عميق، تحسين الدورة الدموية، تقليل التوتر العضلي، ودعم التوازن العام للجسم.</p>
+                    <p>ممارسة الريفلوكسولوجي في المنزل لها قيمة كبيرة، خاصة إذا تم تطبيقها بلطف وباستمرارية. الهدف ليس إحداث الألم، بل تحفيز استجابة علاجية. الضغط المناسب يمكن أن يساعد في تخفيف التوتر، التعب، آلام أسفل الظهر، تيبّس الساقين.</p>
+                    <div class="article-quote">تذكّر: الاستمرارية، التنفس الهادئ، والاستماع إلى جسدك. الريفلوكسولوجي لا يُغني عن العلاجات الطبية، لكنه يُعدّ داعمًا ممتازًا للصحة.</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>R&eacute;flexologie Plantaire</h2>
+                    <img src="reflexology-feet.jpeg" alt="Carte de R&eacute;flexologie" class="article-image-inline">
+                    <p>La r&eacute;flexologie plantaire est une technique th&eacute;rapeutique bas&eacute;e sur un principe important : sous la plante du pied se trouve une carte r&eacute;flexe de tout le corps. Chaque point est li&eacute; &agrave; des organes, muscles et syst&egrave;mes sp&eacute;cifiques.</p>
+                    <p>Lorsque nous appliquons une pression consciente sur des points sp&eacute;cifiques, nous stimulons les terminaisons nerveuses qui envoient des signaux au syst&egrave;me nerveux central. Cela peut aider &agrave; atteindre une relaxation profonde, am&eacute;liorer la circulation sanguine et soutenir l'&eacute;quilibre g&eacute;n&eacute;ral du corps.</p>
+                    <div class="article-quote">Rappelez-vous : r&eacute;gularit&eacute;, respiration calme, et &eacute;coute de votre corps. La r&eacute;flexologie ne remplace pas les traitements m&eacute;dicaux, mais c'est un excellent soutien pour la sant&eacute;.</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>Foot Reflexology</h2>
+                    <img src="reflexology-feet.jpeg" alt="Reflexology Map" class="article-image-inline">
+                    <p>Reflexology is a therapeutic technique based on an important principle: under the sole of the foot lies a reflexive map of the entire body. Each point is connected to specific organs, muscles, and systems.</p>
+                    <p>When we apply conscious pressure to specific points, we stimulate nerve endings that send signals to the central nervous system. This can help achieve deep relaxation, improve blood circulation, reduce muscle tension, and support the body's overall balance.</p>
+                    <div class="article-quote">Remember: consistency, calm breathing, and listening to your body. Reflexology does not replace medical treatment, but it is an excellent health support.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auricular Therapy Modal -->
+    <div class="article-modal" id="modal-auricular">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="auricular-therapy.jpeg" alt="Auricular Therapy" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>العلاج بالأذن — المنعكسات الأذينية</h2>
+                    <p>يُعدّ العلاج بالأذن أحد فروع الطب الصيني التقليدي، ويقوم على مبدأ أن الأذن تمثّل خريطة مصغّرة للجسم، حيث ترتبط نقاط معينة فيها بأعضاء ووظائف مختلفة.</p>
+                    <p>تعتمد هذه التقنية على تنشيط مراكز عصبية دقيقة في الأذن، والتي تتصل مباشرة بالدماغ وبمختلف أجهزة الجسم. تحفيزها يساهم في تحسين الدورة الدموية، وتهدئة الجهاز العصبي، وتنظيم الإشارات المرتبطة بالألم والشهية والحالة النفسية.</p>
+                    <h3>يُستخدم العلاج بالأذن في تخفيف:</h3>
+                    <ul>
+                        <li>الصداع والتوتر واضطرابات النوم</li>
+                        <li>الحساسية وآلام الجسم</li>
+                        <li>مشاكل الجهاز الهضمي</li>
+                        <li>الشهية المفرطة ودعم حالات الإدمان</li>
+                        <li>تحسين التوازن النفسي والعاطفي</li>
+                    </ul>
+                    <p>تتم الجلسة بطريقة بسيطة وغير مؤلمة، حيث يتم تحفيز النقاط باستخدام أدوات دقيقة مثل البذور أو الضغط اليدوي.</p>
+                    <div class="article-quote">يتميّز هذا العلاج بكونه طبيعيًا، آمنًا، وفعّالًا عند دمجه مع نمط حياة صحي، مما يجعله وسيلة داعمة لتحقيق التوازن الشامل للجسم والعقل.</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>Auriculoth&eacute;rapie — Les R&eacute;flexes Auriculaires</h2>
+                    <p>L'auriculoth&eacute;rapie est une branche de la m&eacute;decine traditionnelle chinoise bas&eacute;e sur le principe que l'oreille repr&eacute;sente une carte miniature du corps, o&ugrave; certains points sont li&eacute;s &agrave; diff&eacute;rents organes et fonctions.</p>
+                    <h3>Utilis&eacute;e pour soulager :</h3>
+                    <ul>
+                        <li>Maux de t&ecirc;te, stress et troubles du sommeil</li>
+                        <li>Allergies et douleurs corporelles</li>
+                        <li>Probl&egrave;mes digestifs</li>
+                        <li>App&eacute;tit excessif et soutien aux addictions</li>
+                        <li>Am&eacute;lioration de l'&eacute;quilibre psychologique et &eacute;motionnel</li>
+                    </ul>
+                    <div class="article-quote">Ce traitement est naturel, s&ucirc;r et efficace lorsqu'il est combin&eacute; avec un mode de vie sain, ce qui en fait un soutien pr&eacute;cieux pour l'&eacute;quilibre global du corps et de l'esprit.</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>Auricular Therapy — Ear Reflexes</h2>
+                    <p>Auricular therapy is a branch of traditional Chinese medicine based on the principle that the ear represents a miniature map of the body, where certain points are linked to different organs and functions.</p>
+                    <h3>Used to relieve:</h3>
+                    <ul>
+                        <li>Headaches, stress, and sleep disorders</li>
+                        <li>Allergies and body pain</li>
+                        <li>Digestive problems</li>
+                        <li>Excessive appetite and addiction support</li>
+                        <li>Improved psychological and emotional balance</li>
+                    </ul>
+                    <div class="article-quote">This therapy is natural, safe, and effective when combined with a healthy lifestyle, making it a valuable support for overall body-mind balance.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trees & Nature Modal -->
+    <div class="article-modal" id="modal-trees">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="tree-energy.jpeg" alt="Tree Energy" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>سرّ قديم في الطبيعة — كيف تتواصل مع الأشجار لتستعيد طاقتك</h2>
+                    <p>كل شجرة هي كائن حي يقف بين السماء والأرض، وكأنها قناة تربط بين طاقة الأرض العميقة وطاقة السماء الواسعة. لذلك كانت الأشجار عبر التاريخ رمزًا للثبات والحياة والشفاء.</p>
+                    <h3>متى يكون أفضل وقت للذهاب إلى الشجرة؟</h3>
+                    <h4>الصباح — لملء القوة والحيوية</h4>
+                    <p>في هذا الوقت تستيقظ الطبيعة بكل حيويتها، وتكون الأشجار في ذروة نشاطها. الصباح هو لحظة بداية جديدة، حيث تشارك الشجرة طاقة النمو والحياة.</p>
+                    <h4>بعد الظهر — للتطهير والتخفف</h4>
+                    <p>في هذا الوقت تميل الطاقة في الطبيعة إلى الهدوء، وكأن الشجرة مستعدة لاستقبال ما تحمله من تعب أو توتر وتحويله بهدوء.</p>
+                    <h3>كيف تختار الشجرة المناسبة؟</h3>
+                    <p>اختر الشجرة التي تشعر بالراحة عند الاقتراب منها. غالبًا تكون شجرة قوية، أوراقها حية ولامعة وتشعر تجاهها بنوع من الطمأنينة.</p>
+                    <h3>ممارسة بسيطة للهدوء مع الشجرة</h3>
+                    <ul>
+                        <li>قف أو اجلس بهدوء وتخيّل أن طاقة الأرض تصعد من الجذور عبر الجذع</li>
+                        <li>عرّف نفسك للشجرة في ذهنك: "أنا هنا فقط لأستريح قليلًا"</li>
+                        <li>خذ نفسًا عميقًا وبطيئًا ثم أخرجه ببطء — كرر لعدة دقائق</li>
+                        <li>يفضل توجيه الوجه نحو الشرق لأن شروق الشمس يرمز للبدايات والطاقة المتجددة</li>
+                    </ul>
+                    <div class="article-quote">نحن لسنا فقط مستهلكين للطبيعة، بل جزء منها. والأشجار ليست مجرد نباتات، بل رفاق صامتون يمنحون الظل والهواء والحياة. الصداقة مع الطبيعة تبدأ بالاحترام والوعي.</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>Un ancien secret de la nature — comment communiquer avec les arbres</h2>
+                    <p>Chaque arbre est un &ecirc;tre vivant entre ciel et terre, comme un canal reliant l'&eacute;nergie profonde de la terre &agrave; l'&eacute;nergie vaste du ciel. C'est pourquoi les arbres ont toujours &eacute;t&eacute; des symboles de stabilit&eacute;, de vie et de gu&eacute;rison.</p>
+                    <h3>Quel est le meilleur moment ?</h3>
+                    <h4>Le matin — pour se remplir de force et vitalit&eacute;</h4>
+                    <p>La nature s'&eacute;veille avec toute sa vitalit&eacute; et les arbres sont au sommet de leur activit&eacute;.</p>
+                    <h4>L'apr&egrave;s-midi — pour la purification et le soulagement</h4>
+                    <p>L'&eacute;nergie dans la nature tend vers le calme, comme si l'arbre &eacute;tait pr&ecirc;t &agrave; recevoir votre fatigue et la transformer doucement.</p>
+                    <h3>Pratique simple</h3>
+                    <ul>
+                        <li>Tenez-vous ou asseyez-vous calmement et imaginez l'&eacute;nergie montant des racines</li>
+                        <li>Respirez profond&eacute;ment et lentement pendant plusieurs minutes</li>
+                        <li>Orientez votre visage vers l'Est — le lever du soleil symbolise les nouveaux d&eacute;buts</li>
+                    </ul>
+                    <div class="article-quote">Nous ne sommes pas seulement des consommateurs de la nature, nous en faisons partie. L'amiti&eacute; avec la nature commence par le respect et la conscience.</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>An Ancient Secret in Nature — How to Connect with Trees</h2>
+                    <p>Every tree is a living being standing between heaven and earth, like a channel connecting the deep energy of the earth to the vast energy of the sky. That's why trees have always been symbols of stability, life, and healing.</p>
+                    <h3>When is the best time?</h3>
+                    <h4>Morning — to fill with strength and vitality</h4>
+                    <p>Nature awakens with full vitality, and trees are at the peak of their activity.</p>
+                    <h4>Afternoon — for purification and relief</h4>
+                    <p>Energy in nature tends toward calm, as if the tree is ready to receive your fatigue and transform it gently.</p>
+                    <h3>Simple Practice</h3>
+                    <ul>
+                        <li>Stand or sit calmly and imagine earth energy rising from the roots through the trunk</li>
+                        <li>Breathe deeply and slowly for several minutes</li>
+                        <li>Face East — sunrise symbolizes new beginnings and renewed energy</li>
+                    </ul>
+                    <div class="article-quote">We are not just consumers of nature, we are part of it. Trees are not just plants — they are silent companions offering shade, air, and life. Friendship with nature begins with respect and awareness.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tesla 369 Modal -->
+    <div class="article-modal" id="modal-tesla">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="tesla-369.jpeg" alt="Tesla 369" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>نيكولا تسلا — نبيّ المستقبل وتقنيات تجسيد أفكاره</h2>
+                    <p>كان نيكولا تسلا شخصية غامضة، فيلسوفًا، مخترعًا، وعبقريًا في الهندسة الكهربائية. يُذكر غالبًا بفضل مساهماته الثورية في التيار المتناوب والراديو ونقل الطاقة لاسلكيًا. لكن خلف عبقريته العلمية، توجد حياة مليئة بالبحث الميتافيزيقي.</p>
+                    <div class="article-quote">"إذا أردت أن تفهم أسرار الكون، فكّر من حيث الطاقة، التردد، والاهتزاز."<br>— نيكولا تسلا</div>
+                    <h3>العقل الميتافيزيقي</h3>
+                    <p>رأى تسلا أن الكون نظام متناغم قائم على الطاقة والتردد والاهتزاز. تأثر بالفلسفات الشرقية ومفهوم "البرانا" (الطاقة الحيوية). كان مفتونًا بالأرقام 3 و6 و9 ويعتقد أنها مفتاح لفهم الكون.</p>
+                    <h3>تقنيات تسلا في التصوّر وتجسيد الأفكار</h3>
+                    <ul>
+                        <li><strong>النمذجة الذهنية:</strong> كان يبني اختراعاته في ذهنه ويختبرها ويطوّرها قبل تنفيذها</li>
+                        <li><strong>التحكم في الخيال:</strong> درّب نفسه على السيطرة على الصور الذهنية</li>
+                        <li><strong>الحضانة الذهنية:</strong> كان يترك الأفكار تنضج داخليًا لفترات طويلة</li>
+                        <li><strong>التفكير المنظومي:</strong> لم يرَ الاختراع كجهاز منفصل بل كجزء من نظام كامل</li>
+                    </ul>
+                    <h3>طريقة 3-6-9</h3>
+                    <p>طريقة شهيرة تعتمد على تكرار النوايا: 3 مرات صباحًا، 6 مرات ظهرًا، 9 مرات مساءً. مستوحاة من اهتمامه بهذه الأرقام.</p>
+                    <h3>تطبيق عملي</h3>
+                    <ul>
+                        <li>التصوّر الواضح للأهداف</li>
+                        <li>الشعور بالنتيجة وكأنها تحققت</li>
+                        <li>الممارسة اليومية</li>
+                        <li>الجمع بين التفكير والعمل</li>
+                    </ul>
+                    <div class="article-quote">نيكولا تسلا لم يكن مجرد مخترع، بل عقلًا استثنائيًا جمع بين العلم والوعي. قدّم نموذجًا فريدًا يوضح كيف يمكن للعقل والخيال أن يتحولا إلى أدوات حقيقية للإبداع والتغيير.</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>Nikola Tesla — Proph&egrave;te du Futur et Techniques de Manifestation</h2>
+                    <p>Nikola Tesla &eacute;tait une personnalit&eacute; myst&eacute;rieuse, philosophe, inventeur et g&eacute;nie de l'ing&eacute;nierie &eacute;lectrique. Il est souvent mentionn&eacute; pour ses contributions r&eacute;volutionnaires au courant alternatif, &agrave; la radio et &agrave; la transmission d'&eacute;nergie sans fil.</p>
+                    <div class="article-quote">&laquo;Si vous voulez comprendre les secrets de l'univers, pensez en termes d'&eacute;nergie, de fr&eacute;quence et de vibration.&raquo;<br>— Nikola Tesla</div>
+                    <h3>Techniques de Tesla pour la visualisation</h3>
+                    <ul>
+                        <li><strong>Mod&eacute;lisation mentale :</strong> Il construisait ses inventions dans son esprit avant de les r&eacute;aliser</li>
+                        <li><strong>Contr&ocirc;le de l'imagination :</strong> Il s'entra&icirc;nait &agrave; ma&icirc;triser les images mentales</li>
+                        <li><strong>Incubation mentale :</strong> Il laissait les id&eacute;es m&ucirc;rir int&eacute;rieurement</li>
+                        <li><strong>Pens&eacute;e syst&eacute;mique :</strong> Chaque invention faisait partie d'un syst&egrave;me complet</li>
+                    </ul>
+                    <h3>La m&eacute;thode 3-6-9</h3>
+                    <p>R&eacute;p&eacute;tition des intentions : 3 fois le matin, 6 fois &agrave; midi, 9 fois le soir. Inspir&eacute;e de sa fascination pour ces nombres.</p>
+                    <div class="article-quote">Tesla n'&eacute;tait pas qu'un inventeur, mais un esprit exceptionnel alliant science et conscience — un mod&egrave;le unique montrant comment l'esprit et l'imagination peuvent devenir de v&eacute;ritables outils de cr&eacute;ation.</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>Nikola Tesla — Prophet of the Future & Manifestation Techniques</h2>
+                    <p>Nikola Tesla was a mysterious personality, philosopher, inventor, and genius in electrical engineering. He is often remembered for his revolutionary contributions to alternating current, radio, and wireless energy transmission.</p>
+                    <div class="article-quote">"If you want to understand the secrets of the universe, think in terms of energy, frequency, and vibration."<br>— Nikola Tesla</div>
+                    <h3>Tesla's Visualization Techniques</h3>
+                    <ul>
+                        <li><strong>Mental Modeling:</strong> He built inventions in his mind, tested and refined them before execution</li>
+                        <li><strong>Imagination Control:</strong> He trained himself to master mental imagery</li>
+                        <li><strong>Mental Incubation:</strong> He let ideas mature internally over long periods</li>
+                        <li><strong>Systems Thinking:</strong> Each invention was part of a complete system</li>
+                    </ul>
+                    <h3>The 3-6-9 Method</h3>
+                    <p>Repeat intentions: 3 times in the morning, 6 times at noon, 9 times in the evening. Inspired by his fascination with these numbers.</p>
+                    <div class="article-quote">Tesla was not just an inventor, but an exceptional mind blending science and consciousness — a unique model showing how mind and imagination can become real tools for creation and change.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alta Major Modal -->
+    <div class="article-modal" id="modal-alta-major">
+        <div class="article-modal-content">
+            <button class="article-modal-close" onclick="closeArticle()">&times;</button>
+            <img src="alta-major-chakra.jpeg" alt="Alta Major Chakra" class="article-modal-hero">
+            <div class="article-modal-body">
+                <div class="lang-block" data-lang-ar>
+                    <h2>المحور الروحي للوعي — الجهاز الشبكي والعصب الحائر ومركز ألطا مايور</h2>
+                    <p>توجد محور روحي للجسد والعقل، يضمّ الجهاز الشبكي المنشّط (RAS)، والعصب الحائر، ومركز "ألطا مايور" أو ما يُعرف بالشاكرا القذالية الكبرى، والتي تُعد بوابة إلى اللاوعي ورابطًا بين وعي الجسد ووعي الروح.</p>
+                    <h3>المراكز الثلاثة الرئيسية</h3>
+                    <ul>
+                        <li><strong>الجهاز الشبكي المنشّط (RAS):</strong> بوابة الإدراك الواعي والانتباه</li>
+                        <li><strong>العصب الحائر:</strong> حلقة الوصل بين جميع المراكز العصبية في الجسد</li>
+                        <li><strong>مركز ألطا مايور:</strong> مركز التنسيق — "فم الإله" — بوابة الوسادة اليشمية — الشاكرا التاسعة</li>
+                    </ul>
+                    <h3>"دوائر النار" — الشاكرات</h3>
+                    <ul>
+                        <li>شاكرا التاج (ساهاسرارا) — الغدة الصنوبرية</li>
+                        <li>شاكرا القلب (أناتاها) — الغدة الزعترية</li>
+                        <li>مركز ألطا (الشاكرا القذالية) — الغدة الدرقية وجارات الدرقية</li>
+                    </ul>
+                    <h3>الأنتاكارانا</h3>
+                    <p>تنشيط مركز ألطا يعتمد على "علم المثلثات الطاقية" عبر ربط خيط الحياة وخيط الوعي وبناء الأنتاكارانا — "الجسر بين العقل الأدنى والعقل الأعلى، وبين الأنا الإلهية والروح الفردية".</p>
+                    <div class="article-quote">"عندما تتحد هذه المراكز الثلاثة، يتحول الإنسان إلى حالة تحرير من دورة الكارما."<br>— أ. أ. بيلي، رسالة في النار الكونية</div>
+                </div>
+                <div class="lang-block" data-lang-fr>
+                    <h2>L'Axe Spirituel de la Conscience — Le Syst&egrave;me R&eacute;ticulaire, le Nerf Vague et le Centre Alta Major</h2>
+                    <p>Il existe un axe spirituel du corps et de l'esprit, comprenant le syst&egrave;me r&eacute;ticulaire activ&eacute; (RAS), le nerf vague et le centre &laquo;Alta Major&raquo; — la grande chakra occipitale, porte de l'inconscient et lien entre la conscience du corps et celle de l'esprit.</p>
+                    <h3>Les trois centres principaux</h3>
+                    <ul>
+                        <li><strong>Syst&egrave;me R&eacute;ticulaire Activ&eacute; (RAS) :</strong> Porte de la perception consciente et de l'attention</li>
+                        <li><strong>Nerf Vague :</strong> Lien entre tous les centres nerveux du corps</li>
+                        <li><strong>Centre Alta Major :</strong> Centre de coordination — &laquo;Bouche de Dieu&raquo; — la 9&egrave;me chakra</li>
+                    </ul>
+                    <h3>Les &laquo;Cercles de Feu&raquo; — Les Chakras</h3>
+                    <ul>
+                        <li>Chakra Couronne (Sahasrara) — Glande Pin&eacute;ale</li>
+                        <li>Chakra du C&oelig;ur (Anahata) — Thymus</li>
+                        <li>Centre Alta (Chakra Occipital) — Thyro&iuml;de et Parathyro&iuml;de</li>
+                    </ul>
+                    <div class="article-quote">&laquo;Lorsque ces trois centres s'unissent, l'&ecirc;tre humain atteint un &eacute;tat de lib&eacute;ration du cycle karmique.&raquo;<br>— A.A. Bailey, Trait&eacute; sur le Feu Cosmique</div>
+                </div>
+                <div class="lang-block" data-lang-en>
+                    <h2>The Spiritual Axis of Consciousness — The Reticular System, Vagus Nerve & Alta Major Center</h2>
+                    <p>There exists a spiritual axis of body and mind, comprising the Reticular Activating System (RAS), the Vagus Nerve, and the "Alta Major" center — the great occipital chakra, gateway to the unconscious and link between body consciousness and soul consciousness.</p>
+                    <h3>The Three Main Centers</h3>
+                    <ul>
+                        <li><strong>Reticular Activating System (RAS):</strong> Gateway to conscious perception and attention</li>
+                        <li><strong>Vagus Nerve:</strong> The connecting link between all nervous centers in the body</li>
+                        <li><strong>Alta Major Center:</strong> Coordination center — "Mouth of God" — the 9th Chakra</li>
+                    </ul>
+                    <h3>"Circles of Fire" — The Chakras</h3>
+                    <ul>
+                        <li>Crown Chakra (Sahasrara) — Pineal Gland</li>
+                        <li>Heart Chakra (Anahata) — Thymus Gland</li>
+                        <li>Alta Center (Occipital Chakra) — Thyroid & Parathyroid</li>
+                    </ul>
+                    <div class="article-quote">"When these three centers unite, the human being transitions into a state of liberation from the karmic cycle."<br>— A.A. Bailey, Treatise on Cosmic Fire</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Why Us Section -->
     <section class="why-us" id="why">
         <div class="section-container">
@@ -2557,6 +3555,11 @@
                     <span data-lang-fr>Formations</span>
                     <span data-lang-en>Courses</span>
                 </a>
+                <a href="#articles">
+                    <span data-lang-ar>مقالات</span>
+                    <span data-lang-fr>Articles</span>
+                    <span data-lang-en>Articles</span>
+                </a>
                 <a href="#testimonials">
                     <span data-lang-ar>الآراء</span>
                     <span data-lang-fr>T&eacute;moignages</span>
@@ -2718,6 +3721,30 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // ========== ARTICLE MODALS ==========
+        function openArticle(id) {
+            const modal = document.getElementById('modal-' + id);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticle() {
+            document.querySelectorAll('.article-modal').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.article-modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) closeArticle();
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeArticle();
         });
     </script>
 </body>
