@@ -1863,9 +1863,180 @@
                 padding: 1.2rem;
             }
         }
+
+        /* ========== INTRO ANIMATION ========== */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0518 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+        }
+
+        .intro-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .intro-svg-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        @media (max-width: 480px) {
+            .intro-svg-container {
+                width: 240px;
+                height: 240px;
+            }
+        }
+
+        .intro-svg-container svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .intro-flower circle {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 0.6;
+            opacity: 0;
+        }
+
+        .intro-flower .outer-ring {
+            stroke-width: 0.8;
+            opacity: 0;
+        }
+
+        .intro-logo-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 0 rgba(201,168,76,0);
+            opacity: 0;
+        }
+
+        @media (max-width: 480px) {
+            .intro-logo-center {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        .intro-name {
+            margin-top: 2rem;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @media (max-width: 480px) {
+            .intro-name {
+                font-size: 1.8rem;
+            }
+        }
+
+        .intro-tagline {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            opacity: 0;
+            transform: translateY(15px);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .intro-energy-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .intro-energy-ring .energy-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .intro-om {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            color: var(--gold);
+            opacity: 0;
+            filter: drop-shadow(0 0 20px rgba(201,168,76,0.6));
+        }
+
+        body.intro-active {
+            overflow: hidden;
+        }
     </style>
 </head>
-<body data-active-lang="ar">
+<body data-active-lang="ar" class="intro-active">
+    <!-- Intro Animation -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-svg-container">
+            <svg viewBox="0 0 100 100" class="intro-flower" id="introFlower">
+                <!-- Outer ring -->
+                <circle class="outer-ring" cx="50" cy="50" r="30"/>
+                <!-- Flower of Life — 6 petals + center -->
+                <circle cx="50" cy="50" r="15"/>
+                <circle cx="50" cy="35" r="15"/>
+                <circle cx="62.99" cy="42.5" r="15"/>
+                <circle cx="62.99" cy="57.5" r="15"/>
+                <circle cx="50" cy="65" r="15"/>
+                <circle cx="37.01" cy="57.5" r="15"/>
+                <circle cx="37.01" cy="42.5" r="15"/>
+                <!-- Second layer -->
+                <circle cx="50" cy="20" r="15"/>
+                <circle cx="75.98" cy="35" r="15"/>
+                <circle cx="75.98" cy="65" r="15"/>
+                <circle cx="50" cy="80" r="15"/>
+                <circle cx="24.02" cy="65" r="15"/>
+                <circle cx="24.02" cy="35" r="15"/>
+                <!-- Outer boundary -->
+                <circle class="outer-ring" cx="50" cy="50" r="45"/>
+            </svg>
+            <div class="intro-energy-ring" id="introEnergyRing"></div>
+            <span class="intro-om" id="introOm">&#x0950;</span>
+            <img src="brian.jpeg" alt="Dr. Nada Chatar" class="intro-logo-center" id="introLogo">
+        </div>
+        <div class="intro-name" id="introName">Dr. Nada Chatar</div>
+        <div class="intro-tagline" id="introTagline">
+            <span data-lang-ar>الشفاء يبدأ من الداخل</span>
+            <span data-lang-fr>La gu&eacute;rison commence de l'int&eacute;rieur</span>
+            <span data-lang-en>Healing begins from within</span>
+        </div>
+    </div>
+
     <!-- Particles -->
     <div class="particles" id="particles"></div>
 
@@ -3604,6 +3775,114 @@
     </footer>
 
     <script>
+        // ========== INTRO ANIMATION ==========
+        (function() {
+            const overlay = document.getElementById('introOverlay');
+            const circles = document.querySelectorAll('.intro-flower circle');
+            const logo = document.getElementById('introLogo');
+            const om = document.getElementById('introOm');
+            const name = document.getElementById('introName');
+            const tagline = document.getElementById('introTagline');
+            const energyRing = document.getElementById('introEnergyRing');
+
+            // Create energy dots
+            for (let i = 0; i < 24; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'energy-dot';
+                const angle = (i / 24) * Math.PI * 2;
+                dot.style.top = (50 + Math.sin(angle) * 50) + '%';
+                dot.style.left = (50 + Math.cos(angle) * 50) + '%';
+                dot.style.transform = 'translate(-50%, -50%)';
+                energyRing.appendChild(dot);
+            }
+
+            const dots = energyRing.querySelectorAll('.energy-dot');
+
+            // Timeline
+            let t = 0;
+
+            // Phase 1: Draw sacred geometry circles one by one
+            circles.forEach((circle, i) => {
+                const delay = 80 + i * 120;
+                const circumference = 2 * Math.PI * parseFloat(circle.getAttribute('r'));
+                circle.style.strokeDasharray = circumference;
+                circle.style.strokeDashoffset = circumference;
+                setTimeout(() => {
+                    circle.style.opacity = '1';
+                    circle.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    circle.style.strokeDashoffset = '0';
+                }, delay);
+                t = Math.max(t, delay + 800);
+            });
+
+            // Phase 2: Om symbol appears and fades
+            setTimeout(() => {
+                om.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                om.style.opacity = '0.8';
+                om.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, t - 400);
+
+            // Phase 3: Om fades, logo emerges
+            setTimeout(() => {
+                om.style.transition = 'opacity 0.5s ease';
+                om.style.opacity = '0';
+
+                setTimeout(() => {
+                    logo.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 1.2s ease';
+                    logo.style.opacity = '1';
+                    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+                    logo.style.boxShadow = '0 0 60px rgba(201,168,76,0.5)';
+                }, 400);
+            }, t + 200);
+
+            // Phase 4: Energy dots radiate outward
+            setTimeout(() => {
+                dots.forEach((dot, i) => {
+                    setTimeout(() => {
+                        dot.style.transition = 'opacity 0.4s ease, transform 0.6s ease';
+                        dot.style.opacity = '0.7';
+                        const angle = (i / 24) * Math.PI * 2;
+                        const dist = 55;
+                        dot.style.top = (50 + Math.sin(angle) * dist) + '%';
+                        dot.style.left = (50 + Math.cos(angle) * dist) + '%';
+                        setTimeout(() => {
+                            dot.style.opacity = '0';
+                        }, 500);
+                    }, i * 30);
+                });
+            }, t + 600);
+
+            // Phase 5: Name and tagline appear
+            setTimeout(() => {
+                name.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                name.style.opacity = '1';
+                name.style.transform = 'translateY(0)';
+            }, t + 800);
+
+            setTimeout(() => {
+                tagline.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                tagline.style.opacity = '1';
+                tagline.style.transform = 'translateY(0)';
+            }, t + 1100);
+
+            // Phase 6: Sacred geometry gently pulses then fade out
+            setTimeout(() => {
+                circles.forEach(circle => {
+                    circle.style.transition = 'opacity 0.6s ease';
+                    circle.style.opacity = '0.3';
+                });
+            }, t + 1400);
+
+            // Phase 7: Dissolve intro
+            setTimeout(() => {
+                overlay.classList.add('fade-out');
+                document.body.classList.remove('intro-active');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 1000);
+            }, t + 2200);
+        })();
+
         // ========== LANGUAGE SWITCHING ==========
         const html = document.documentElement;
 
